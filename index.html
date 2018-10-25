@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>微明火花试验网-WeiMing  Intrinsic Safety Spark Test</title>
+    <meta name="keywords" content="微明火花试验网,sparktest.cn,FangBao.cn.com,www.2er.top,www.ex3836.com,www.enqm.net,www.fangbao.ltd,煤矿防爆,工厂防爆,厂用防爆,本安参数在线查询,本安参数查询,微明软件计划,本安仿真软件,本安参数查询应用APP,本质安全评估软件,火花试验,本安,本质安全,在线查询,在线估算,最大允许电容,最大允许电感,最小点燃电流,防爆工具,本安工具,MIC,本安电路设计,参数估算,在线评估,本安认证,防爆合格证,Spark Test,Intrinsic safety,hazardous area,危险场所,explosive atmosphere,爆炸性环境,I类,II类,煤矿,非煤矿山,Intrinsically safe circuits,Group I,Group II,Maximum Ignition Current(MIC),Intrinsic safety data," />
+    <meta name="description" content="本网站提供在线查询煤矿用、工厂用防爆电气设备本安电路最大电压、电流、电容、电感，为本安电路设计提供前期帮助。This website can give an indication of the maximum voltage, current, capacitance and inductance to use when designing a circuit to be intrinsically Safe for a selected gas sub-group (I,IIA, IIB or IIC)."/>
+    <link rel="shortcut icon" href="favicon.ico">
+	<!--分享代码开始--> 
+<a class="bshareDiv" href="http://www.bshare.cn/share">分享按钮</a> 
+<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#uuid=&amp;style=3&amp;fs=4&amp;textcolor=#fff&amp;bgcolor=#06C&amp;text=分享到"></script> 
+<!--分享代码结束-->
+	<!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <!--   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+
+    <script>
+window.onload=function(){
+ document.getElementById("div-IndVol").style.display = "block";
+}
+</script>
+    <script language="javascript" type="text/javascript">
+    function indClick()
+    {
+		var gt = theForm.grouptype.value;
+       for(var i=0;i<theForm.grouptype.length;i++)
+		{
+           if(theForm.grouptype[i].checked==true)
+			{
+              gt = theForm.grouptype[i].value;
+              break;
+           }
+       }
+	   //alert("oo1");
+	   var ct = theForm.circuittype.value;
+	   for(var i1=0;i1<theForm.circuittype.length;i1++)
+		{
+		//alert("oo");
+           if(theForm.circuittype[i1].checked==true)
+			{
+              ct = theForm.circuittype[i1].value;
+              break;
+           }
+       }
+      //alert("单选框的值为:"+ct);
+	  //		document.getElementById("v").value="block";
+		var obj1=document.getElementById("div-indvol");
+		var obj2=document.getElementById("span-indvol");
+		var t=obj2.style.display;
+            //alert("你点击的Radio按钮值为"+t);
+	var iv = theForm.indvol.value;
+	for(var i1=0;i1<theForm.indvol.length;i1++)
+	{
+    if(theForm.indvol[i1].checked==true)
+	{
+	   iv = theForm.indvol[i1].value;
+        break;
+    }
+    }
+	  if(ct=="inductance"){
+	  if(t=='block'){
+			obj2.style.display ='none';
+                obj1.style.display ='none';
+				//alert("你点击的Radio按钮值为none");
+				}
+			if(t=='none'){
+				obj2.style.display ='block';
+                obj1.style.display ='block';
+				//alert("你点击的Radio按钮值为block");
+				}
+		if (gt=="I" )
+		{
+		//alert ("I");
+		document.getElementById("4").disabled=true;
+		//document.getElementById("8").checked=true;
+		///alert ("ok1");
+	   if(iv=="4")
+	   {
+	   document.getElementById("4").disabled=true;
+		document.getElementById("8").checked=true;
+	   }
+		//alert("oo");
+		}
+		else if(gt=="IIC")
+		{
+		document.getElementById("4").disabled=false;
+		}
+		else if(gt=="IIA"||gt=="IIB")
+		{
+		document.getElementById("24").checked=true;
+		obj2.style.display ='none';
+        obj1.style.display ='none';
+		}
+		document.getElementById("15").disabled=true;
+		document.getElementById("10").checked=true;
+		
+		}
+    }
+	function resClick()
+	{
+	document.getElementById("15").disabled=false;
+	document.getElementById("span-indvol").style.display='none';
+	document.getElementById("div-indvol").style.display='none';
+	}
+	function capClick()
+	{
+	document.getElementById("15").disabled=false;
+	document.getElementById("span-indvol").style.display='none';
+	document.getElementById("div-indvol").style.display='none';
+	}
+	function gtIClick()
+	{
+	document.getElementById("4").disabled=true;
+	var iv = theForm.indvol.value;
+	//alert ("ok1");
+	for(var i1=0;i1<theForm.indvol.length;i1++)
+	{
+	//lert("oo");
+    if(theForm.indvol[i1].checked==true)
+	{
+	
+        iv = theForm.indvol[i1].value;
+        break;
+    }
+    }
+	//alert ("ok1");
+	   if(iv=="4")
+	   {
+	   document.getElementById("8").checked=true;
+	   }
+	   var ct = theForm.circuittype.value;
+	for(var i=0;i<theForm.circuittype.length;i++)
+	{
+	//alert("oo");
+    if(theForm.circuittype[i].checked==true)
+	{
+        ct = theForm.circuittype[i].value;
+        break;
+    }
+    }
+	   if(ct=="inductance")
+	   {
+	   document.getElementById("span-indvol").style.display='block';
+	   document.getElementById("div-indvol").style.display='block';
+	   }
+	}
+	function gtIICClick()
+	{
+	document.getElementById("4").disabled=false;
+	var ct = theForm.circuittype.value;
+	for(var i=0;i<theForm.circuittype.length;i++)
+	{
+	//alert("oo");
+    if(theForm.circuittype[i].checked==true)
+	{
+        ct = theForm.circuittype[i].value;
+        break;
+    }
+    }
+	   if(ct=="inductance")
+	   {
+	   document.getElementById("span-indvol").style.display='block';
+	   document.getElementById("div-indvol").style.display='block';
+	   }
+	}
+	function gtIIAClick()
+	{
+	//document.getElementById("4").disabled=true;
+	
+	   document.getElementById("24").checked=true;
+	   document.getElementById("span-indvol").style.display='none';
+	   document.getElementById("div-indvol").style.display='none';
+	   document.getElementById("15").disabled=false;
+	}
+	function gtIIBClick()
+	{
+	//document.getElementById("4").disabled=true;
+	
+	   document.getElementById("24").checked=true;
+	   document.getElementById("span-indvol").style.display='none';
+	   document.getElementById("div-indvol").style.display='none';
+	   document.getElementById("15").disabled=false;
+	}
+	function indvolClick(t)
+		{
+		var obj1=document.getElementById("div-indvol");
+		var obj2=document.getElementById("span-indvol");
+		obj2.style.display ='none';
+        obj1.style.display ='none';
+		}
+	function factorclick(v)
+		{
+		
+		var sf;
+		for(var i=0;i<theForm.factor.length;i++)
+		{
+           if(theForm.factor[i].checked==true)
+			{
+              sf= theForm.factor[i].value;
+              break;
+           }
+       }
+	   if(sf=="15"&&ct=="inductance")
+	   {
+	   document.getElementById("10").checked=true;
+	   }
+		
+		}
+function isaNum()
+{
+var num = document.getElementById('val').value;
+//alert(num);
+  if( num.length==0 || isNaN( num ) ||num<0 )
+  {
+   alert('输入有误!');
+   theForm.val.value='';
+   theForm.val.focus();
+   return false;
+  }
+  else
+  {
+  //alert("submit");
+  //document.theForm.submit();
+  return true;
+  }
+}		
+    </script>
+<script>   
+function Changeinput(objid,type,strDesc)  
+{  
+    if (document.getElementById(objid).value==strDesc || document.getElementById(objid).value=="")  
+    {  
+        if(type==1)  
+        {     
+            document.getElementById(objid).value="";  
+        }  
+        else  
+        {      
+            document.getElementById(objid).value=strDesc;  
+        }  
+    }  
+}  
+</script>
+    </head>
+
+    <body>
+<div class="container"> 
+<center>
+     <a href="index.html"><img src="images/logo.gif" alt="微明火花试验网" title="微明火花试验网SparkTest.cn" height="75" width="auto" /></a>
+	   &nbsp;&nbsp;    <font size=5>微明火花试验网&nbsp;&nbsp; WeiMing  Intrinsic Safety Spark Test</font><br>
+      搏之不得，名曰<strong>微</strong>；见小曰<strong>明</strong>。 
+    &nbsp;《道德经》&nbsp;&nbsp;It is such a small thing that you can not touch it ,named WEI; But you can feel it,named MING. Written by Laozi《Tao Te Ching》
+	</center>
+      <p> </p>
+      <p></p>
+      <ul class="nav nav-pills">
+    <li class="nav-item"> <a class="nav-link active" href="index.html">Home</a> </li>
+    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="iindex.html">I类</a>
+          <div class="dropdown-menu">
+		  <a class="dropdown-item" href="iindex.html">I类所有 All</a>
+        <h5 class="dropdown-header">允许电流 Current</h5>
+        <a class="dropdown-item" href="icurrent.php"  title="I类煤矿用本安设备电最大允许电流查询">I类煤矿用本安设备最大允许电流</a> <a class="dropdown-item" href="icurrentex.php"  title="I类煤矿用本安设备电最大允许电流查询（扩展）">I类煤矿用本安设备最大允许电流（扩展）</a>
+        <h5 class="dropdown-header">允许电感 Inductance</h5>
+        <a class="dropdown-item" href="iinductance24.php"  title="I类煤矿用24V本安设备电感查询">24V</a> <a class="dropdown-item" href="iinductance22.php"  title="I类煤矿用22V本安设备电感查询">22V</a> <a class="dropdown-item" href="iinductance20.php"  title="I类煤矿用20V本安设备电感查询">20V</a> <a class="dropdown-item" href="iinductance18.php"  title="I类煤矿用18V本安设备电感查询">18V</a> <a class="dropdown-item" href="iinductance16.php"  title="I类煤矿用16V本安设备电感查询">16V</a> <a class="dropdown-item" href="iinductance12.php"  title="I类煤矿用12V本安设备电感查询">12V</a> <a class="dropdown-item" href="iinductance8.php"  title="I类煤矿用8V本安设备电感查询">8V</a>
+        <h5 class="dropdown-header">允许电容 Capacity</h5>
+        <a class="dropdown-item" href="icapacitance.php"  title="I类煤矿用本安设备电容查询">I类煤矿用本安设备</a> <a class="dropdown-item" href="icapacitanceex0.php"  title="I类煤矿用本安设备扩展电容查询">I类煤矿用本安设备（串0Ω）</a> <a class="dropdown-item" href="icapacitanceex5.6.php"  title="I类煤矿用本安设备扩展（串联5.6欧姆）电容查询">I类煤矿用本安设备（串5.6Ω）</a> <a class="dropdown-item" href="icapacitanceex15.php"  title="I类煤矿用本安设备扩展（串联15欧姆）电容查询">I类煤矿用本安设备（串15Ω）</a> <a class="dropdown-item" href="icapacitanceex40.php"  title="I类煤矿用本安设备扩展（串联40欧姆）电容查询">I类煤矿用本安设备（串40Ω）</a> </div>
+        </li>
+    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="iiaindex.html"> IIA类 </a>
+          <div class="dropdown-menu">
+		  <a class="dropdown-item" href="iiaindex.html">IIA类所有 All</a>
+        <h5 class="dropdown-header">允许电流 Current</h5>
+        <a class="dropdown-item"  href="iiacurrent.php"  title="IIA类工厂用本安设备最小点燃电流查询">IIA类工厂用本安设备</a> <a  class="dropdown-item" href="iiacurrentex.php"  title="IIA类工厂用本安设备最小点燃电流查询">IIA类工厂用本安设备(扩展)</a>
+        <h5 class="dropdown-header">允许电感 Inductance</h5>
+        <a  class="dropdown-item" href="iiainductance.php"  title="IIA类工厂用24V本安设备电感查询">24V</a>
+        <h5 class="dropdown-header">允许电容 Capacity</h5>
+        <a class="dropdown-item"  href="iiacapacitance.php"  title="IIA类工厂用本安设备最大允许电容查询">IIA类工厂用本安设备</a> <a class="dropdown-item"  href="iiacapacitanceex.php"  title="IIA类工厂用本安设备（扩展）最大允许电容查询">IIA类工厂用本安设备（扩展）</a> </div>
+        </li>
+    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="iibindex.html"> IIB类 </a>
+          <div class="dropdown-menu">
+		  <a class="dropdown-item" href="iibindex.html">IIB类所有 All</a>
+        <h5 class="dropdown-header">允许电流 Current</h5>
+        <a class="dropdown-item"  href="iibcurrent.php"  title="IIB类工厂用本安设备最小点燃电流查询">IIB类工厂用本安设备</a> <a class="dropdown-item"  href="iibcurrentex.php"  title="IIB类工厂用本安设备最小点燃电流查询">IIB类工厂用本安设备(扩展)</a>
+        <h5 class="dropdown-header">允许电感 Inductance</h5>
+        <a class="dropdown-item"  href="iibinductance.php"  title="IIB类工厂用24V本安设备电感查询">24V</a>
+        <h5 class="dropdown-header">允许电容 Capacity</h5>
+        <a class="dropdown-item"  href="iibcapacitance.php"  title="IIB类工厂用本安设备最大允许电容查询">IIB类工厂用本安设备</a> <a class="dropdown-item"  href="iibcapacitanceex.php"  title="IIB类工厂用本安设备（扩展）最大允许电容查询">IIB类工厂用本安设备（扩展）</a> </div>
+        </li>
+    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="iicindex.html"> IIC类 </a>
+          <div class="dropdown-menu">
+		  <a class="dropdown-item" href="iicindex.html">IIC类所有 All</a>
+        <h5 class="dropdown-header">允许电流 Current</h5>
+        <a class="dropdown-item"  href="iiccurrent.php"  title="IIC类工厂用本安设备最小点燃电流查询">IIC类工厂用本安设备</a> <a class="dropdown-item"  href="iiccurrentex.php"  title="IIC类工厂用本安设备电最大允许电流查询（扩展）">IIC类工厂用本安设备最大允许电流（扩展）</a>
+        <h5 class="dropdown-header">允许电感 Inductance</h5>
+        <a class="dropdown-item"  href="iicinductance24.php"  title="IIC类工厂用24V本安设备电感查询">24V</a> <a class="dropdown-item"  href="iicinductance22.php"  title="IIC类工厂用22V本安设备电感查询">22V</a> <a  class="dropdown-item" href="iicinductance20.php"  title="IIC类工厂用20V本安设备电感查询">20V</a> <a class="dropdown-item"  href="iicinductance18.php"  title="IIC类工厂用18V本安设备电感查询">18V</a> <a class="dropdown-item"  href="iicinductance16.php"  title="IIC类工厂用16V本安设备电感查询">16V</a> <a class="dropdown-item"  href="iicinductance12.php"  title="IIC类工厂用12V本安设备电感查询">12V</a> <a class="dropdown-item"  href="iicinductance8.php"  title="IIC类工厂用8V本安设备电感查询">8V</a> <a class="dropdown-item"  href="iicinductance4.php"  title="IIC类工厂用4V本安设备电感查询">4V</a> <a class="dropdown-item"  href="iicinductance.php"  title="IIC类工厂用24V本安设备电感查询">24V（扩展）</a>
+        <h5 class="dropdown-header">允许电容 Capacity</h5>
+        <a class="dropdown-item"  href="iiccapacitance.php"  title="IIC类工厂用本安设备电容查询">IIC类工厂用本安设备</a> <a class="dropdown-item"  href="iiccapacitanceex.php"  title="IIC类工厂用本安设备扩展电容查询">IIC类工厂用本安设备（扩展）</a> </div>
+        </li>
+		<li class="nav-item"><a class="nav-link" href="bbs/" title="防爆论坛Forum">论坛BBS</a></li>
+    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">推荐</a>
+          <div class="dropdown-menu"> 
+		  <a class="dropdown-item"  href="help.html" title="帮助文件">帮助Help</a>  
+		  <a class="dropdown-item"  href="intrinsicsafety.html" title="什么是本质安全及历史">本安简介 Intrinsic safety</a> 
+		  <a class="dropdown-item"  href="coiltem.php" title="本安电路用绕组温升估算">绕组温升估算 Temp Rise for coil</a>
+		  <a class="dropdown-item"  href="maxcurrentofwire.php" title="本安电路用导线自身发热的最高温度对应的最大允许电流查询">导线允许电流估算 Current for wire</a> 
+		  <a class="dropdown-item"  href="loro.php" title="用电阻限制电源能量时最大外部电感与电阻比(Lo/Ro)的查询">最大外部电感与电阻比查询 Lo/Ro</a> 
+		  <a class="dropdown-item"  href="mie.html" title="最小点燃能量,最小点火能">最小点火能查询 MIE</a> 
+		  <a class="dropdown-item"  href="/softplan/others/dianqijianxi1.html" title="本安电路电气间隙的拟合">电气间隙的数据拟合 Clearance Fit</a>
+		  <a class="dropdown-item"  href="daodejing.html" title="道德经下载 download Tao Te Ching">道德经 Tao Te Ching</a> 
+		  </div>
+    </li>
+    <li class="nav-item  dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="softplan/sta/index.html" alt="spark test appartus本安电路试验火花试验装置演示">火花装置STA</a>
+	<div class="dropdown-menu">
+	<a class="dropdown-item"  href="softplan/sta/3dsta.html" title="用Mathematica绘制3D火花试验装置">用MMA绘制3D火花试验装置STA</a>
+	<a class="dropdown-item"  href="softplan/sta/cadmuimdisk.html" title="用Mathematica绘制3D旋转镉盘cadmium disk">用MMA绘制3D旋转镉盘 Cad Disk</a>
+	<a class="dropdown-item"  href="softplan/sta/gears.html" title="用Mathematica绘制3D旋转齿轮rotated gears">用MMA绘制3D旋转齿轮Gears</a>
+	<a class="dropdown-item"  href="softplan/sta/stacharacters.html" title="火花试验装置特性 Characteristics of STA">火花试验装置特性Characteristics</a>
+	<a class="dropdown-item"  href="softplan/sta/sta-stl.html" title="火花试验装置的STL模型展示STLs for STA">火花装置STL模型STL Models</a>
+	</div>
+	</li>
+    <li class="nav-item"><a class="nav-link" href="download.html" title="本安参数查询资源相关下载">下载</a></li>
+    <li class="nav-item"><a class="nav-link" href="download2.html" title="本安参数查询应用APP下载" >APP下载</a></li>
+    <li class="nav-item"><a class="nav-link" href="wiki" title="防爆维基百科">Wiki</a></li>
+   <!-- <li class="nav-item"><a class="nav-link" href="blog" title="防爆、创客、编程心得">博客</a></li>  
+    <li class="nav-item"><a class="nav-link" href="en/index.html" title="English Version">English</a></li>--> 
+    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" title="选择一个记得住的网址">本站网址URLs</a>
+          <div class="dropdown-menu"> <a class="dropdown-item" href="index.html"  title="微明火花试验网">www.SparkTest.cn</a> <a class="dropdown-item" href="index.html"  title="微明火花试验网-防爆中国">www.FangBao.cn.com</a> <a class="dropdown-item" href="index.html"  title="微明火花试验网-防爆有限公司">www.FangBao.ltd</a> <a class="dropdown-item" href="index.html"  title="微明火花试验网-GB3836防爆系列标准">www.Ex3836.com</a> <a class="dropdown-item" href="index.html"  title="微明火花试验网-最二网">www.2er.top</a> <a class="dropdown-item" href="index.html"  title="微明火花试验网-防爆网">www.enqm.net</a> </div>
+        </li>
+  </ul>
+
+      <div class="card">
+    <div class="card-header">参数查询 IS Search...</div>
+    <center>
+          <table  border=0  cellspacing=0 cellpadding=0 >
+        <tr ALIGN=left>
+              <td  valign=top height=470 ><form method="post" action="search.php" name="theForm" onsubmit='return isaNum()'>
+                  <p>
+                <fieldset class=searchgrouptype1>
+                  <legend><img src="img/biaoqian.ico"></img>设备类别 Group Type</legend>
+                  <input type="radio" name="grouptype"value="I" id="I" checked onclick='gtIClick()'>
+                  I类
+                  </input>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="grouptype"value="IIA" id="IIA" onclick='gtIIAClick()'>
+                  IIA类
+                  </input>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="grouptype"value="IIB" id="IIB" onclick='gtIBIClick()'>
+                  IIB类
+                  </input>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="grouptype"value="IIC" id="IIC" onclick='gtIICClick()'>
+                  IIC类
+                  </input>
+                </fieldset>
+                  </p>
+                  <p>
+                <fieldset class=searchcircuittype1>
+                  <legend><img src="img/biaoqian.ico"></img>电路类别 Circuit Type</legend>
+                  <input type="radio" name="circuittype"value="capacity" id="capacity" checked onclick='capClick()'>
+                  电容电路 Capacity
+                  </input>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="circuittype"value="resistance" id="resistance" onclick='resClick()'>
+                  电阻电路 Resistance
+                  </input>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="circuittype"value="inductance" id="inductance" onclick='indClick()'>
+                  电感电路 Inductance
+                  </input>
+                </fieldset>
+                  </p>
+                  <DIV id="div-indvol" style="display:none"><span id='span-indvol' style="display:none">
+                    <p>
+                  <fieldset >
+                    <legend><img src="img/biaoqian.ico"></img>电路电压Voltage</legend>
+                    <input type="radio" id=4 name="indvol"value="4"  onclick='indvolClick(this)'>
+                    4V
+                    </input>
+                    &nbsp;
+                    <input type="radio" id=8 name="indvol"value="8"  onclick='indvolClick(this)'>
+                    8V
+                    </input>
+                    &nbsp;
+                    <input type="radio" id =12 name="indvol"value="12" onclick='indvolClick(this)' >
+                    12V
+                    </input>
+                    &nbsp;
+                    <input type="radio" id =16 name="indvol"value="16" onclick='indvolClick(this)' >
+                    16V
+                    </input>
+                    &nbsp;
+                    <input type="radio" id =18 name="indvol"value="18" onclick='indvolClick(this)' >
+                    18V
+                    </input>
+                    &nbsp;
+                    <input type="radio" id =20 name="indvol"value="20" onclick='indvolClick(this)' >
+                    20V
+                    </input>
+                    &nbsp;
+                    <input type="radio" id =22 name="indvol"value="22" onclick='indvolClick(this)' >
+                    22V
+                    </input>
+                    &nbsp;
+                    <input type="radio" id =24 name="indvol"value="24" checked onclick='indvolClick(this)' >
+                    24V
+                    </input>
+                    </p>
+                  </fieldset>
+                    </span></div>
+                  <p>
+                <fieldset >
+                  <legend><img src="img/biaoqian.ico"></img>安全系数 Factor</legend>
+                  <input type="radio" name="factor"value="15" id="15" checked onclick='factorclick("15")'>
+                  1.5
+                  </input>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="factor"value="10" id="10" onclick='factorclick("10")'>
+                  1.0
+                  </input>
+                </fieldset>
+                  </p>
+                  <p>
+                <fieldset >
+                  <legend><img src="img/biaoqian.ico"></img>电压或电流Voltage or Current(V or A)</legend>
+                  <input class="form-control" type="text" name="value" id="val" size="4"  maxlength="5" value="" >
+                  </input>
+                  <input type="hidden" id=v name=v value="1" >
+                  </input>
+                </fieldset>
+                  <br>
+                  <div align=right>
+                  <input class="btn btn-success" type="submit" name="submit" value="查询 Submit">
+                  </input>
+                </div>
+                  </p>
+                </form></td>
+            </tr>
+      </table>
+        </center>
+  </div>
+      <div align="center">
+    <h5><a href=newresearch.html>最新查询</a></h5>
+  </div>
+  <p>友情链接：<a href="http://www.chinadmoz.org/" target="_blank" title="DMOZ目录，收录各类优秀网站">DMOZ目录</a></p>
+    </div>
+<footer>
+      <div align="center"><img src="fushun.gif" alt="中国抚顺"/><br />
+ <!--群二维码  <img class="img-fluid"src="img/erweima.jpg"/><br />    -->  
+    <!--加群--> <a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=9bc766a2b190856c0ce980bac7823528cf05ad864fdac00a5d079fec2c274e94"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="加入微明试验网QQ群:本安数据在线查询" title="加入微明火花试验网QQ群" /></a> 
+    <!--加群--> 
+    <br />
+  </div>
+      <div> 
+    <div class="footer_body">
+          <p class="powered" align="center"> Powered by <strong>SparkTest.cn Version 3.0(BootStrap4.0)</strong> <br />
+        Copyright &copy; 2012-2018 微明火花试验网 版权所有 复制必究	 All Rights Reserved <a href="http://www.miibeian.gov.cn/" target=blank>辽ICP备16004642号</a> 
+        <!--3w.sparktest.cn统计--> 
+        <script language="javascript" type="text/javascript" src="http://js.users.51.la/16359667.js"></script> 
+		</p>
+      </div>
+       <noscript>
+      <a href="http://www.51.la/?16359667" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/16359667.asp" style="border:none" /></a>
+      
+	  </noscript>
+          <!--3w.sparktest.cn 统计-->
+		  <a href="/blog/"><font color="#ffffff">blog</font></a>
+		<!--   <center><img src="hackis.jpg"/></center>--> 
+          <p></p>
+        </div>
+    <!-- /powered --> 
+
+    </footer>
+</body>
+</html>
