@@ -7,3 +7,4 @@ This website can give an indication of the maximum voltage, current, capacitance
 You can get the max inductance\capcitance\ when you know voltage and currnet about the circuit.
 
 网址 WebSite：http://www.SparkTest.cn or http://www.FangBao.cn.com or http://www.FangBao.Ltd or http://www.Ex3836.com
+Email：admin@enqm.net
